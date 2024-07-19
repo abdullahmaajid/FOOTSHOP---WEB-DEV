@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FOOTSHOP</title>
+    <link rel="icon" type="image/x-icon" href="images/logo/main1.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+
+        body {
+            font-family: 'Gruppo', sans-serif;
+        }
+        .row.justify-content-center {
+            margin-top: 120px;
+            
+        }
+
+        .variant-selection {
+            margin-bottom: 20px;
+        }
+
+        .carousel-item img {
+
+            border-radius: 20px; /* Sesuaikan nilai border-radius sesuai keinginan */
+        }
+
+        .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    font-size: 1rem; /* Atur ukuran font ikon */
+    width: 20px; /* Atur lebar ikon */
+    height: 20px; /* Atur tinggi ikon */
+    line-height: 1; /* Sesuaikan garis vertikal dan horizontal */
+}
+
+
+        /* Mengatur ukuran thumbnail carousel */
+    .carousel-thumbnails img {
+        width: 118px; /* Sesuaikan dengan ukuran yang diinginkan */
+        height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+        margin: 0 5px; /* Atur jarak antara thumbnail */
+        cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+        border-radius: 10px;
+    }
+
+    .variant-images {
+        display: flex;
+        gap: 10px;
+        border-radius: 10px;
+    }
+
+    .variant-image {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        border: 1.5px solid transparent;
+        transition: border-color 0.3s ease;
+        border-radius: 10px;
+    }
+
+    .variant-image:hover {
+        border-color: #323232;
+    }
+
+    .variant-image.active {
+        border-color: white !important;
+    }
+
+    .product-description {
+        text-align: justify;
+        color: #555; /* Warna teks untuk deskripsi produk */
+        font-size: 16px; /* Ukuran font */
+        line-height: 1.6; /* Jarak antar baris */
+        margin-top: 10px; /* Jarak atas */
+    }
+
+    .product-details {
+        max-width: 690px;
+    }
+
+    .size-selection .btn {
+        background-color: black; /* Dark gray background for size buttons */
+        color: #323232; /* White text */
+        position: relative;
+        transition: background-image 0.3s ease;
+        border-color: #323232; 
+    }
+
+    .size-selection .btn:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        opacity: 0.5;
+        z-index: 0;
+        border-radius: 0.25rem; /* Default Bootstrap border radius */
+    }
+
+    .size-selection .btn:hover {
+        background-color: white; /* White background on hover */
+        color: white; /* Black text on hover */
+        border-color: white; 
+    }
+
+    .size-selection .btn-check:checked + .btn {
+        background-color: white; /* White background when selected */
+        color: #323232; /* Black text when selected */
+        background-image: url('images/cards/background.png'); /* Set background image when selected */
+        border-color: #323232; /* White border color */
+    }
+
+    .size-selection .btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn.btn-primary {
+        background-image: url('images/cards/backgroundinvert.png'); /* Background image for Add to Cart button */
+        background-size: cover;
+        background-position: center;
+        border-color: white; /* White border color */
+        color: #323232; /* Black text color */
+    }
+
+    #quantity {
+        background-image: url('images/cards/background.png'); /* Background image for quantity input */
+        background-size: cover;
+        background-position: center;
+        border-color: #323232; /* Border color */
+        color: white; /* Text color */
+
+    }
+
+    .product-details h2 {
+        font-size: 40px;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .product-details .product-description {
+        color: #9999;
+        line-height: 1.6;
+    }
+
+    .product-details h4 {
+        margin-top: 20px;
+        font-size: 35px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .variant-selection .form-label {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        display: block;
+    }
+
+    
+
+    .form-label {
+        margin-top: -20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        display: block;
+    }
+
+    .btn-group .btn {
+        font-size: 19px;
+        width: 61.5px;
+    }
+
+    .cart-container {
+        margin-top: 20px;
+    }
+
+    .cart-container .btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-color: white;
+    }
+
+    .cart-container .btn-primary:hover {
+        background-color: white;
+        border-color: white;
+    }
+
+    .custom-cart-logo {
+        width: 24px;
+        margin-right: 10px;
+    }
+
+    .swal2-popup {
+        background-color: #000 !important; /* Ubah latar belakang menjadi hitam */
+        color: #fff; /* Warna teks menjadi putih */
+    }
+
+    .swal2-icon {
+        color: #fff; /* Warna ikon (jika ada) menjadi putih */
+    }
+
+    .swal2-title {
+        color: #fff; /* Warna judul menjadi putih */
+    }
+
+    .swal2-content {
+        color: #fff; /* Warna teks konten menjadi putih */
+    }
+
+    .swal2-confirm,
+    .swal2-cancel {
+        color: #000; /* Warna teks tombol */
+        background-color: #fff; /* Warna latar belakang tombol */
+        border: none; /* Hilangkan border */
+        padding: 10px 20px; /* Beri padding pada tombol */
+        border-radius: 5px; /* Bulatan sudut tombol */
+        cursor: pointer; /* Kursor jadi pointer saat dihover */
+    }
+
+    .swal2-confirm:hover,
+    .swal2-cancel:hover {
+        opacity: 0.8; /* Transparansi tombol saat dihover */
+    }
+
+
+    footer {
+        margin-top:-10px;
+        color: #fff; /* Warna teks */
+        padding: 40px 0; /* Padding atas dan bawah */
+    }
+    
+    footer a {
+        color: #fff; /* Warna tautan */
+        text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+    }
+    
+    footer a:hover {
+        color: #ddd; /* Warna tautan saat dihover */
+    }
+    
+    footer .btn-floating {
+        border-radius: 50%; /* Membuat tombol menjadi bulat */
+        width: 50px; /* Lebar tombol */
+        height: 50px; /* Tinggi tombol */
+        display: inline-flex; /* Menampilkan elemen sebagai flex */
+        align-items: center; /* Memusatkan ikon secara vertikal */
+        justify-content: center; /* Memusatkan ikon secara horizontal */
+    }
+    
+    footer .btn-outline-light {
+        border: 1px solid #fff; /* Border putih pada tombol */
+        color: #fff; /* Warna teks tombol */
+    }
+    
+    footer .btn-outline-light:hover {
+        background-color: #fff; /* Warna latar belakang saat dihover */
+        color: #333; /* Warna teks tombol saat dihover */
+    }
+    
+    footer .text-uppercase {
+        text-transform: uppercase; /* Membuat teks menjadi huruf kapital semua */
+    }
+    
+    footer h5 {
+        margin-bottom: 20px; /* Jarak bawah judul */
+        font-size: 16px; /* Ukuran font judul */
+        font-weight: bold; /* Ketebalan font judul */
+    }
+    
+    footer .list-unstyled {
+        list-style: none; /* Menghilangkan bullet pada list */
+        padding-left: 0; /* Menghilangkan padding kiri pada list */
+    }
+    
+    footer .list-unstyled li {
+        margin-bottom: 10px; /* Jarak bawah tiap item list */
+    }
+    footer .container {
+        max-width: 1200px; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+        margin: 0 auto; /* Center align kontainer */
+        padding: 20px; /* Berikan padding untuk memberi ruang di sekitar konten */
+    }
+    
+    
+    footer .container p {
+        margin-bottom: 20px; /* Jarak bawah paragraf */
+    }
+    
+    footer .container img {
+        display: block; /* Menampilkan gambar sebagai block element */
+        margin: 0 auto; /* Memusatkan gambar */
+    }
+    
+    footer .fab, footer .fas {
+        font-size: 24px; /* Ukuran font ikon */
+    }
+    
+    footer .information li {
+        display: flex;
+        align-items: center;
+    }
+    
+    footer .col-lg-2, footer .col-lg-4 {
+        flex: 0 0 auto; /* Mengatur agar kolom fleksibel */
+        max-width: 20%; /* Mengatur agar kolom memiliki lebar maksimum */
+    }
+    
+    footer .col-lg-4 {
+        max-width: 33.3333%; /* Mengatur agar kolom Information memiliki lebar maksimum yang lebih besar */
+    }
+    
+    footer .text-left {
+        text-align: left; /* Mengatur teks menjadi rata kiri */
+    }
+    
+    footer .text-lg-start {
+        text-align: left !important; /* Mengatur teks menjadi rata kiri pada perangkat dengan ukuran layar besar */
+    }
+
+    @media (max-width: 375px) {
+
+        .row.justify-content-center {
+            justify-content: center;
+            margin-top: 120px;
+            width: 360px;
+            margin-left:20px;
+            
+        }
+
+        .product-description{
+            width: 320px;
+        }
+
+        #quantity {
+            width: 320px;
+        }
+
+        .cart-container{
+            width: 320px;
+        }
+
+        .product-details h2{
+            margin-top:20px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .product-details h4{
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+
+        .btn-group .btn {
+            font-size: 15px;
+            max-width: 30px;
+        }
+
+        .carousel-thumbnails img {
+            width: 50px; /* Sesuaikan dengan ukuran yang diinginkan */
+            height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+            margin: 0 2px; /* Atur jarak antara thumbnail */
+            cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+            border-radius: 10px;
+        }
+
+        footer {
+            justify-content: center;
+            width: 100%; /* Menjadikan container lebar 100% dari parent container */
+            width: 375px; /* Atur lebar maksimum sesuai kebutuhan */
+            padding-right:10px;
+            color: #fff; /* Warna teks */
+            
+
+        }
+        .text-center {
+            margin-top: 0.5rem;
+        }
+        
+        .text-center p {
+            font-size: 0.8rem; /* Smaller font size */
+            line-height: 1.25;   /* Adjust line height */
+            margin-bottom: 0.5rem; /* Less margin */
+        }
+    }
+    @media (max-width: 390px) {
+        footer{
+            margin-left: 14px;
+        }
+    }
+    @media (max-width: 414px) {
+        footer{
+            margin-left: 8px;
+        }
+    }
+    @media(min-width: 376px) and (max-width: 414px) {
+
+        .row.justify-content-center {
+            justify-content: center;
+            margin-top: 120px;
+            width: 398px;
+            margin-left:15px;
+            
+        }
+
+        .product-description{
+            width: 360px;
+        }
+
+        #quantity {
+            width: 360px;
+        }
+
+        .cart-container{
+            width: 360px;
+        }
+
+        .product-details h2{
+            margin-top:20px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .product-details h4{
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+
+        .btn-group .btn {
+            font-size: 15px;
+            max-width: 33.5px;
+        }
+
+        .carousel-thumbnails img {
+            width: 52px; /* Sesuaikan dengan ukuran yang diinginkan */
+            height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+            margin: 0 5px; /* Atur jarak antara thumbnail */
+            cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+            border-radius: 10px;
+        }
+
+        footer {
+            justify-content: center;
+            width: 100%; /* Menjadikan container lebar 100% dari parent container */
+            max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+            color: #fff; /* Warna teks */
+            
+
+        }
+        .text-center {
+            margin-top: 0.5rem;
+        }
+        
+        .text-center p {
+            font-size: 0.8rem; /* Smaller font size */
+            line-height: 1.25;   /* Adjust line height */
+            margin-bottom: 0.5rem; /* Less margin */
+        }
+    }
+
+    @media (min-width: 415px) and (max-width: 430px) {
+
+        .row.justify-content-center {
+            justify-content: center;
+            margin-top: 120px;
+            width: 415px;
+            margin-left:15px;
+            
+        }
+
+        .product-description{
+            width: 378px;
+        }
+
+        #quantity {
+            width: 378px;
+        }
+
+        .cart-container{
+            width: 378px;
+        }
+
+        .product-details h2{
+            margin-top:20px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .product-details h4{
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+
+        .btn-group .btn {
+            font-size: 15px;
+            max-width: 35.2px;
+        }
+
+        .carousel-thumbnails img {
+            width: 54px; /* Sesuaikan dengan ukuran yang diinginkan */
+            height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+            margin: 0 5px; /* Atur jarak antara thumbnail */
+            cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+            border-radius: 10px;
+        }
+
+        footer {
+            justify-content: center;
+            width: 100%; /* Menjadikan container lebar 100% dari parent container */
+            max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+            color: #fff; /* Warna teks */
+            
+
+        }
+        .text-center {
+            margin-top: 0.5rem;
+        }
+        
+        .text-center p {
+            font-size: 0.8rem; /* Smaller font size */
+            line-height: 1.25;   /* Adjust line height */
+            margin-bottom: 0.5rem; /* Less margin */
+        }
+    }
+
+    .social-icon img {
+        width: 24px;
+        height: 24px;
+        transition: filter 0.3s, background-color 0.3s;
+      }
+      
+      .social-icon:hover {
+        background-color: white !important;
+      }
+      
+      .social-icon:hover img {
+        filter: invert(1);
+      }
+
+    
+        
+    </style>
+
+    
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- End Navbar Toggler -->
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo/main1.png" alt="Bootstrap" width="50" height="50">
+        </a>
+        <!-- End Cart button -->
+        <!-- Menu di kiri -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+      </div>
+        <div class="cart-container">
+          <a href="cart2.html" class="btn navbar-cart-btn">
+              <img src="images/logo/cart.png" alt="Cart" class="custom-cart-logo">
+          </a>
+      </div>
+</nav>
+
+        <section class="row justify-content-center">
+            <!-- Carousel -->
+            <div class="col-lg-5">
+                <div id="productCarousel" class="carousel slide me-3" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/feeds/c2/c1.png" class="d-block w-100" alt="Product Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/feeds/c2/c2.png" class="d-block w-100" alt="Product Image 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/feeds/c2/c3.png" class="d-block w-100" alt="Product Image 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/feeds/c2/c4.png" class="d-block w-100" alt="Product Image 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/feeds/c2/c5.png" class="d-block w-100" alt="Product Image 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/feeds/c2/c6.png" class="d-block w-100" alt="Product Image 6">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <div class="carousel-thumbnails d-flex justify-content-center mt-3">
+                        <img src="images/feeds/c2/c1.png" alt="Product Thumbnail 1" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active">
+                        <img src="images/feeds/c2/c2.png" alt="Product Thumbnail 2" data-bs-target="#productCarousel" data-bs-slide-to="1">
+                        <img src="images/feeds/c2/c3.png" alt="Product Thumbnail 3" data-bs-target="#productCarousel" data-bs-slide-to="2">
+                        <img src="images/feeds/c2/c4.png" alt="Product Thumbnail 4" data-bs-target="#productCarousel" data-bs-slide-to="3">
+                        <img src="images/feeds/c2/c5.png" alt="Product Thumbnail 5" data-bs-target="#productCarousel" data-bs-slide-to="4">
+                        <img src="images/feeds/c2/c6.png" alt="Product Thumbnail 6" data-bs-target="#productCarousel" data-bs-slide-to="5">
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- Product Details -->
+            <div class="col-lg-6 product-details">
+                <h2>Converse x Liverpool FC 76</h2>
+                <p class="product-description">Discover the dynamic blend of sporty elegance and team spirit with the Converse x Liverpool FC 76 sneakers. Designed for fans and fashion enthusiasts alike, these shoes feature iconic Liverpool FC branding combined with Converse's signature style. Crafted from premium materials, they offer comfort and durability on and off the pitch. Whether you're cheering from the stands or exploring the city streets, these sneakers are your perfect match. Embrace the legacy of champions with every step in the Converse x Liverpool FC 76.</p>
+                <h4>Rp. 2299999</h4>
+                <div class="mb-3">
+                    <!-- Menggunakan gambar sebagai pilihan varian -->
+                    <div class="variant-selection">
+                        <label class="form-label">Choose Variant</label>
+                        <div class="variant-images">
+                            <img src="images/feeds/c2/c1.png" alt="Variant 1" data-variant="1" class="variant-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 size-selection">
+                    <label class="form-label">Size</label>
+                    <div class="btn-group" role="group" aria-label="Size selection">
+                        <!-- Ukuran yang ditambahkan secara dinamis menggunakan JavaScript -->
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" class="form-control" value="1" min="1">
+                </div>
+                <div class="cart-container">
+                    <a href="cart2.html" class="btn btn-primary">
+                        <img src="images/logo/cart.png" alt="Cart" class="custom-cart-logo"> Add to Cart
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+<footer class="text-white text-center">
+    <div class="container p-4">
+
+        <!-- Social icons -->
+<section class="mb-4 text-center mt-4">
+    <!-- WhatsApp -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://wa.me/6281259890076" role="button">
+        <img src="images/logo/wa.png" alt="WhatsApp">
+    </a>
+  
+    <!-- Instagram -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a.maajid_/" role="button">
+        <img src="images/logo/ig.png" alt="Instagram">
+    </a>
+  
+    <!-- Shopee -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://shopee.co.id" role="button">
+        <img src="images/logo/shopee.png" alt="Shopee">
+    </a>
+  
+    <!-- Tokopedia -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.tokopedia.com" role="button">
+        <img src="images/logo/tokopedia.png" alt="Tokopedia">
+    </a>
+  
+    <!-- TikTok -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.tiktok.com/@jediyspace" role="button">
+        <img src="images/logo/tiktok.png" alt="TikTok">
+    </a>
+  </section>
+  <!-- Social icons -->
+
+        <!-- Section: Text -->
+        <section class="text-center mt-5">
+            <img src="images/logo/main1.1.png" alt="FOOTSHOP Logo" width="300" height="128">
+             </section>
+        <!-- Section: Text -->
+         <!-- Section: Text -->
+        <section class="text-center mt-4">
+            <p>FOOTSHOP brings you a handpicked selection of high-quality, limited-edition products at affordable prices. Specializing in unique items that cater to diverse tastes, from stylish apparel to trendy footwear and exclusive accessories. Explore our wide range and discover luxury and value, making FOOTSHOP your ultimate destination for fashion-forward finds.</p>
+        <p>FOOTSHOP</p>
+        </section>
+        <!-- Section: Text -->
+
+    </div>
+</footer>
+        
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const thumbnails = document.querySelectorAll('.carousel-thumbnails img');
+            const carousel = new bootstrap.Carousel('#productCarousel');
+
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener('mouseenter', function () {
+                    carousel.to(index); // Change the carousel to the hovered thumbnail
+                });
+            });
+
+            const variantImages = document.querySelectorAll('.variant-image');
+            const sizeSelection = document.querySelector('.size-selection .btn-group');
+            const addToCartBtn = document.querySelector('.btn.btn-primary');
+    
+            // Event listener untuk pemilihan varian
+            variantImages.forEach(image => {
+                image.addEventListener('click', function () {
+                    // Hapus kelas 'active' dari semua gambar varian
+                    variantImages.forEach(img => img.classList.remove('active'));
+                    // Tambahkan kelas 'active' ke gambar varian yang dipilih
+                    this.classList.add('active');
+                });
+            });
+    
+            // Membuat pilihan ukuran hingga 45
+            for (let size = 35; size <= 45; size++) {
+                const sizeButton = document.createElement('input');
+                sizeButton.type = 'radio';
+                sizeButton.className = 'btn-check';
+                sizeButton.name = 'size';
+                sizeButton.id = 'size' + size;
+                sizeButton.autocomplete = 'off';
+    
+                const sizeLabel = document.createElement('label');
+                sizeLabel.className = 'btn btn-outline-primary';
+                sizeLabel.setAttribute('for', 'size' + size);
+                sizeLabel.textContent = size;
+    
+                // Add background image to size label
+                sizeLabel.style.backgroundImage = `url('images/cards/background.png')`;
+                sizeLabel.style.backgroundSize = 'cover';
+                sizeLabel.style.backgroundPosition = 'center';
+    
+                // Event listener untuk membuat perubahan gambar latar belakang saat ukuran dipilih
+                sizeButton.addEventListener('click', function () {
+                    // Hapus kelas 'active' dari semua tombol ukuran
+                    const allSizeLabels = document.querySelectorAll('.size-selection .btn-outline-primary');
+                    allSizeLabels.forEach(label => {
+                        label.style.backgroundImage = `url('images/cards/background.png')`;
+                    });
+    
+                    // Tambahkan kelas 'active' ke tombol ukuran yang dipilih
+                    sizeLabel.style.backgroundImage = `url('images/cards/backgroundinvert.png')`;
+                });
+    
+                sizeSelection.appendChild(sizeButton);
+                sizeSelection.appendChild(sizeLabel);
+            }
+    
+            // Event listener untuk tombol Add to Cart
+            addToCartBtn.addEventListener('click', function (event) {
+                event.preventDefault(); // Menghindari perilaku default dari tombol submit pada form
+    
+                // Ambil data varian yang dipilih
+                let selectedVariant = null;
+                variantImages.forEach(image => {
+                    if (image.classList.contains('active')) {
+                        selectedVariant = image.getAttribute('data-variant');
+                    }
+                });
+    
+                // Ambil ukuran yang dipilih
+                let selectedSize = null;
+                const sizeButtons = document.querySelectorAll('.size-selection .btn-check');
+                sizeButtons.forEach(button => {if (button.checked) {
+                    selectedSize = button.id.replace('size', '');
+                }
+            });
+    
+            // Ambil nama produk, harga, dan deskripsi
+            const productName = document.querySelector('.product-details h2').textContent.trim();
+            const productDescription = document.querySelector('.product-details p').textContent.trim();
+            const productPriceText = document.querySelector('.product-details h4').textContent.trim();
+            
+            // Ubah harga dari format teks ke angka
+            const productPrice = parseFloat(productPriceText.replace('Rp. ', '').replace('.', '').replace(',', '.'));
+    
+            const quantity = parseInt(document.getElementById('quantity').value);
+    
+            // Validasi quantity
+            if (quantity < 1 || isNaN(quantity)) {
+                // Menggunakan SweetAlert untuk menampilkan pesan error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please enter a valid quantity.'
+                });
+                return;
+            }
+    
+            // Jika tidak ada varian yang dipilih, tampilkan pesan dan hentikan proses
+            if (!selectedVariant) {
+                // Menggunakan SweetAlert untuk menampilkan pesan error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please select a variant.'
+                });
+                return;
+            }
+    
+            // Simpan data produk ke localStorage
+            const product = {
+                name: productName,
+                price: productPrice,
+                variant: selectedVariant,
+                size: selectedSize || 'Not Selected',
+                image: variantImages[selectedVariant - 1].src,
+                description: productDescription,
+                quantity: quantity
+            };
+    
+            // Simpan produk ke dalam array cartItems di localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.push(product);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+            // Menggunakan SweetAlert untuk menampilkan notifikasi sukses
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Product added to cart.'
+            });
+        });
+    });
+    </script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

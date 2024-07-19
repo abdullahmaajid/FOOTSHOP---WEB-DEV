@@ -1,0 +1,524 @@
+body {
+    font-family: 'Gruppo', sans-serif;
+}
+.row.justify-content-center {
+    margin-top: 120px;
+    
+}
+
+.variant-selection {
+    margin-bottom: 20px;
+}
+
+.carousel-item img {
+
+    border-radius: 20px; /* Sesuaikan nilai border-radius sesuai keinginan */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+font-size: 1rem; /* Atur ukuran font ikon */
+width: 20px; /* Atur lebar ikon */
+height: 20px; /* Atur tinggi ikon */
+line-height: 1; /* Sesuaikan garis vertikal dan horizontal */
+}
+
+
+/* Mengatur ukuran thumbnail carousel */
+.carousel-thumbnails img {
+width: 118px; /* Sesuaikan dengan ukuran yang diinginkan */
+height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+margin: 0 5px; /* Atur jarak antara thumbnail */
+cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+border-radius: 10px;
+}
+
+.variant-images {
+display: flex;
+gap: 10px;
+border-radius: 10px;
+}
+
+.variant-image {
+width: 80px;
+height: 80px;
+cursor: pointer;
+border: 1.5px solid transparent;
+transition: border-color 0.3s ease;
+border-radius: 10px;
+}
+
+.variant-image:hover {
+border-color: #323232;
+}
+
+.variant-image.active {
+border-color: white !important;
+}
+
+.product-description {
+text-align: justify;
+color: #555; /* Warna teks untuk deskripsi produk */
+font-size: 16px; /* Ukuran font */
+line-height: 1.6; /* Jarak antar baris */
+margin-top: 10px; /* Jarak atas */
+}
+
+.product-details {
+max-width: 690px;
+}
+
+.size-selection .btn {
+background-color: black; /* Dark gray background for size buttons */
+color: #323232; /* White text */
+position: relative;
+transition: background-image 0.3s ease;
+border-color: #323232; 
+}
+
+.size-selection .btn:before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-size: cover;
+opacity: 0.5;
+z-index: 0;
+border-radius: 0.25rem; /* Default Bootstrap border radius */
+}
+
+.size-selection .btn:hover {
+background-color: white; /* White background on hover */
+color: white; /* Black text on hover */
+border-color: white; 
+}
+
+.size-selection .btn-check:checked + .btn {
+background-color: white; /* White background when selected */
+color: #323232; /* Black text when selected */
+background-image: url('images/cards/background.png'); /* Set background image when selected */
+border-color: #323232; /* White border color */
+}
+
+.size-selection .btn span {
+position: relative;
+z-index: 1;
+}
+
+.btn.btn-primary {
+background-image: url('images/cards/backgroundinvert.png'); /* Background image for Add to Cart button */
+background-size: cover;
+background-position: center;
+border-color: white; /* White border color */
+color: #323232; /* Black text color */
+}
+
+#quantity {
+background-image: url('images/cards/background.png'); /* Background image for quantity input */
+background-size: cover;
+background-position: center;
+border-color: #323232; /* Border color */
+color: white; /* Text color */
+
+}
+
+.product-details h2 {
+font-size: 40px;
+margin-top: -10px;
+margin-bottom: 15px;
+color: white;
+}
+
+.product-details .product-description {
+color: #9999;
+line-height: 1.6;
+}
+
+.product-details h4 {
+margin-top: 20px;
+font-size: 35px;
+font-weight: bold;
+color: white;
+}
+
+.variant-selection .form-label {
+margin-top: 20px;
+font-size: 20px;
+font-weight: bold;
+color: white;
+display: block;
+}
+
+
+
+.form-label {
+margin-top: -20px;
+font-size: 16px;
+font-weight: bold;
+color: white;
+display: block;
+}
+
+.btn-group .btn {
+font-size: 19px;
+width: 61.5px;
+}
+
+.cart-container {
+margin-top: 20px;
+}
+
+.cart-container .btn-primary {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: white;
+border-color: white;
+}
+
+.cart-container .btn-primary:hover {
+background-color: white;
+border-color: white;
+}
+
+.custom-cart-logo {
+width: 24px;
+margin-right: 10px;
+}
+
+.swal2-popup {
+background-color: #000 !important; /* Ubah latar belakang menjadi hitam */
+color: #fff; /* Warna teks menjadi putih */
+}
+
+.swal2-icon {
+color: #fff; /* Warna ikon (jika ada) menjadi putih */
+}
+
+.swal2-title {
+color: #fff; /* Warna judul menjadi putih */
+}
+
+.swal2-content {
+color: #fff; /* Warna teks konten menjadi putih */
+}
+
+.swal2-confirm,
+.swal2-cancel {
+color: #000; /* Warna teks tombol */
+background-color: #fff; /* Warna latar belakang tombol */
+border: none; /* Hilangkan border */
+padding: 10px 20px; /* Beri padding pada tombol */
+border-radius: 5px; /* Bulatan sudut tombol */
+cursor: pointer; /* Kursor jadi pointer saat dihover */
+}
+
+.swal2-confirm:hover,
+.swal2-cancel:hover {
+opacity: 0.8; /* Transparansi tombol saat dihover */
+}
+
+
+footer {
+margin-top:-10px;
+color: #fff; /* Warna teks */
+padding: 40px 0; /* Padding atas dan bawah */
+}
+
+footer a {
+color: #fff; /* Warna tautan */
+text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+}
+
+footer a:hover {
+color: #ddd; /* Warna tautan saat dihover */
+}
+
+footer .btn-floating {
+border-radius: 50%; /* Membuat tombol menjadi bulat */
+width: 50px; /* Lebar tombol */
+height: 50px; /* Tinggi tombol */
+display: inline-flex; /* Menampilkan elemen sebagai flex */
+align-items: center; /* Memusatkan ikon secara vertikal */
+justify-content: center; /* Memusatkan ikon secara horizontal */
+}
+
+footer .btn-outline-light {
+border: 1px solid #fff; /* Border putih pada tombol */
+color: #fff; /* Warna teks tombol */
+}
+
+footer .btn-outline-light:hover {
+background-color: #fff; /* Warna latar belakang saat dihover */
+color: #333; /* Warna teks tombol saat dihover */
+}
+
+footer .text-uppercase {
+text-transform: uppercase; /* Membuat teks menjadi huruf kapital semua */
+}
+
+footer h5 {
+margin-bottom: 20px; /* Jarak bawah judul */
+font-size: 16px; /* Ukuran font judul */
+font-weight: bold; /* Ketebalan font judul */
+}
+
+footer .list-unstyled {
+list-style: none; /* Menghilangkan bullet pada list */
+padding-left: 0; /* Menghilangkan padding kiri pada list */
+}
+
+footer .list-unstyled li {
+margin-bottom: 10px; /* Jarak bawah tiap item list */
+}
+footer .container {
+max-width: 1200px; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+margin: 0 auto; /* Center align kontainer */
+padding: 20px; /* Berikan padding untuk memberi ruang di sekitar konten */
+}
+
+
+footer .container p {
+margin-bottom: 20px; /* Jarak bawah paragraf */
+}
+
+footer .container img {
+display: block; /* Menampilkan gambar sebagai block element */
+margin: 0 auto; /* Memusatkan gambar */
+}
+
+footer .fab, footer .fas {
+font-size: 24px; /* Ukuran font ikon */
+}
+
+footer .information li {
+display: flex;
+align-items: center;
+}
+
+footer .col-lg-2, footer .col-lg-4 {
+flex: 0 0 auto; /* Mengatur agar kolom fleksibel */
+max-width: 20%; /* Mengatur agar kolom memiliki lebar maksimum */
+}
+
+footer .col-lg-4 {
+max-width: 33.3333%; /* Mengatur agar kolom Information memiliki lebar maksimum yang lebih besar */
+}
+
+footer .text-left {
+text-align: left; /* Mengatur teks menjadi rata kiri */
+}
+
+footer .text-lg-start {
+text-align: left !important; /* Mengatur teks menjadi rata kiri pada perangkat dengan ukuran layar besar */
+}
+
+@media (max-width: 375px) {
+
+.row.justify-content-center {
+    justify-content: center;
+    margin-top: 120px;
+    width: 360px;
+    margin-left:20px;
+    
+}
+
+.product-description{
+    width: 320px;
+}
+
+#quantity {
+    width: 320px;
+}
+
+.cart-container{
+    width: 320px;
+}
+
+.product-details h2{
+    margin-top:20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.product-details h4{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.btn-group .btn {
+    font-size: 15px;
+    max-width: 30px;
+}
+
+.carousel-thumbnails img {
+    width: 50px; /* Sesuaikan dengan ukuran yang diinginkan */
+    height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+    margin: 0 2px; /* Atur jarak antara thumbnail */
+    cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+    border-radius: 10px;
+}
+
+footer {
+    justify-content: center;
+    width: 100%; /* Menjadikan container lebar 100% dari parent container */
+    width: 375px; /* Atur lebar maksimum sesuai kebutuhan */
+    padding-right:10px;
+    color: #fff; /* Warna teks */
+    
+
+}
+.text-center {
+    margin-top: 0.5rem;
+}
+
+.text-center p {
+    font-size: 0.8rem; /* Smaller font size */
+    line-height: 1.25;   /* Adjust line height */
+    margin-bottom: 0.5rem; /* Less margin */
+}
+}
+@media (max-width: 390px) {
+footer{
+    margin-left: 14px;
+}
+}
+@media (max-width: 414px) {
+footer{
+    margin-left: 8px;
+}
+}
+@media(min-width: 376px) and (max-width: 414px) {
+
+.row.justify-content-center {
+    justify-content: center;
+    margin-top: 120px;
+    width: 398px;
+    margin-left:15px;
+    
+}
+
+.product-description{
+    width: 360px;
+}
+
+#quantity {
+    width: 360px;
+}
+
+.cart-container{
+    width: 360px;
+}
+
+.product-details h2{
+    margin-top:20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.product-details h4{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.btn-group .btn {
+    font-size: 15px;
+    max-width: 33.5px;
+}
+
+.carousel-thumbnails img {
+    width: 52px; /* Sesuaikan dengan ukuran yang diinginkan */
+    height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+    margin: 0 5px; /* Atur jarak antara thumbnail */
+    cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+    border-radius: 10px;
+}
+
+footer {
+    justify-content: center;
+    width: 100%; /* Menjadikan container lebar 100% dari parent container */
+    max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+    color: #fff; /* Warna teks */
+    
+
+}
+.text-center {
+    margin-top: 0.5rem;
+}
+
+.text-center p {
+    font-size: 0.8rem; /* Smaller font size */
+    line-height: 1.25;   /* Adjust line height */
+    margin-bottom: 0.5rem; /* Less margin */
+}
+}
+
+@media (min-width: 415px) and (max-width: 430px) {
+
+.row.justify-content-center {
+    justify-content: center;
+    margin-top: 120px;
+    width: 415px;
+    margin-left:15px;
+    
+}
+
+.product-description{
+    width: 378px;
+}
+
+#quantity {
+    width: 378px;
+}
+
+.cart-container{
+    width: 378px;
+}
+
+.product-details h2{
+    margin-top:20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.product-details h4{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.btn-group .btn {
+    font-size: 15px;
+    max-width: 35.2px;
+}
+
+.carousel-thumbnails img {
+    width: 54px; /* Sesuaikan dengan ukuran yang diinginkan */
+    height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+    margin: 0 5px; /* Atur jarak antara thumbnail */
+    cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+    border-radius: 10px;
+}
+
+footer {
+    justify-content: center;
+    width: 100%; /* Menjadikan container lebar 100% dari parent container */
+    max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+    color: #fff; /* Warna teks */
+    
+
+}
+.text-center {
+    margin-top: 0.5rem;
+}
+
+.text-center p {
+    font-size: 0.8rem; /* Smaller font size */
+    line-height: 1.25;   /* Adjust line height */
+    margin-bottom: 0.5rem; /* Less margin */
+}
+}

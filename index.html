@@ -1,0 +1,1291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FOOTSHOP</title>
+    <link rel="icon" type="image/x-icon" href="images/logo/main1.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+<!-- Tambahkan elemen img untuk logo Anda di sini -->
+
+  <!-- Other tags -->
+    <style>
+      body {
+        font-family: 'Gruppo', sans-serif;
+        margin-top: 105px; /* Tinggi navbar */
+        overflow-x: hidden;
+        background-color: #000000;
+        color: #ffffff;
+    }
+      
+      
+    .navbar {
+      padding-left: 50px;
+      padding-right: 50px;
+      padding: 20px;
+      font-family: 'Gruppo', sans-serif;
+      font-weight: 600;
+      font-size: 17px;
+      transition: background-color 0.3s;
+      background-color: transparent; /* Navbar harusnya transparan secara default */
+      position: fixed;
+      width: 100%;
+      z-index: 1000; /* Pastikan navbar tetap di atas konten lain */
+  }
+
+  .navbar-black {
+      background-color: #000000 !important;
+  }
+
+  .banner {
+    margin-top: -110px;
+    position: relative;
+    height: 100vh;
+    background: url('images/banner/b1.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
+  .banner-content {
+    z-index: 2;
+  }
+  .banner:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+  .btn-about {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+
+  .banner-content .btn-about {
+    background-color: #ffffff; /* Warna latar belakang tombol */
+    color: #000000; /* Warna teks tombol */
+    border-color: #ffffff; /* Warna border tombol */
+    padding: 10px 20px; /* Padding tombol */
+    text-decoration: none; /* Menghilangkan underline pada link */
+    border-radius: 5px; /* Border radius tombol */
+    font-size: 16px; /* Ukuran font */
+    transition: all 0.3s ease; /* Transisi animasi */
+}
+
+.banner-content .btn-about:hover {
+  background-color: #f0f0f0; /* Warna latar belakang saat hover */
+  color: #000000; /* Warna teks saat hover */
+  border-color: #ffffff; /* Warna border saat hover (jika diperlukan) */
+}
+
+  /* Padding atas untuk konten utama agar tidak tertutup navbar */
+  .main-content {
+      padding-top: 105px; /* Sesuai dengan tinggi navbar */
+  }
+      
+      .navbar-brand img {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .navbar-nav {
+        margin-left: auto;
+        text-align: center;
+      }
+      
+      .nav-link {
+        color: #fff !important;
+        margin-right: 0px;
+        transition: transform 0.2s ease-in-out;
+      }
+      
+      .nav-link:hover {
+        color: #ccc !important;
+        transform: scale(1.1);
+      }
+      
+      .navbar-collapse {
+        padding: 0;
+      }
+      
+      .navbar-collapse .navbar-nav {
+        text-align: center;
+      }
+      
+      .nav-item:hover .nav-link img {
+        transform: scale(1.1);
+      }
+      
+      .nav-item:hover .nav-link {
+        text-decoration: underline;
+        text-underline-offset: 10px;
+      }
+      
+
+
+      .card {
+        height: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        width: auto;
+        transition: transform 0.2s ease-in-out;
+      }
+      
+      .card-body {
+        font-size: 25px;
+        color: #ffffff;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        align-items: baseline;
+      }
+      
+      .card:hover {
+        transform: scale(1.05);
+      }
+      
+      .card-text {
+        font-family: 'Gruppo', sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+      }
+      
+      .card-title {
+        font-family: 'Gruppo', sans-serif;
+      }
+      
+      .card-text {
+        font-family: 'Gruppo', sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+      }
+      
+      .variant-img {
+        transition: transform 0.3s ease;
+      }
+      
+      .variant-img:hover {
+        transform: scale(1.2);
+      }
+      
+      .variant-images {
+        margin-top: auto;
+      }
+      
+      a.text-decoration-none.text-reset {
+        color: inherit;
+      }
+      
+      .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+      
+      .form-inline {
+        display: flex;
+        align-items: center;
+        justify-self: end;
+      }
+      
+      .variant-img {
+        width: 40px;
+        height: 40px;
+        margin: 2px;
+        cursor: pointer;
+      }
+      
+      #carouselExampleIndicators {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      
+      #productContainer {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 20px;
+      }
+      
+      .nav.justify-content-center {
+        margin-bottom: 20px;
+      }
+      
+      .nav-item img {
+        height: 50px;
+      }
+      
+      .row-cols-1 {
+        padding: 0 0;
+      }
+      
+      .navbar-cart-btn {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        color: #ffffff;
+      }
+      
+      .navbar-cart-btn:hover {
+        color: #ccc;
+      }
+      
+      .carousel-item img {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      .carousel {
+        overflow: hidden;
+      }
+      
+      .carousel-inner {
+        overflow-x: hidden;
+      }
+      
+      .carousel-item img {
+        width: 100%;
+        height: auto;
+      }
+      
+      @media (min-width: 1200px) {
+        .row-cols-1 .col-lg-1 {
+          flex: 0 0 14.28%;
+          max-width: 14.28%;
+        }
+      }
+      
+      @media (max-width: 1199.98px) {
+        .row-cols-1 .col-lg-1,
+        .row-cols-1 .col-md-3,
+        .row-cols-1 .col-sm-6 {
+          flex: 0 0 33.33%;
+          max-width: 33.33%;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .row-cols-1 .col-lg-1,
+        .row-cols-1 .col-md-3,
+        .row-cols-1 .col-sm-6 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .row-cols-1 .col-lg-1,
+        .row-cols-1 .col-md-3,
+        .row-cols-1 .col-sm-6 {
+          flex: 0 0 50%;
+          max-width: 100%;
+        }
+      }
+      
+      .custom-cart-logo {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+      }
+
+      
+      
+      
+
+
+      /* Your additional styles */
+      footer {
+        margin-top:-10px;
+        color: #fff; /* Warna teks */
+        padding: 40px 0; /* Padding atas dan bawah */
+    }
+    
+    footer a {
+        color: #fff; /* Warna tautan */
+        text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+    }
+    
+    footer a:hover {
+        color: #ddd; /* Warna tautan saat dihover */
+    }
+    
+    footer .btn-floating {
+        border-radius: 50%; /* Membuat tombol menjadi bulat */
+        width: 50px; /* Lebar tombol */
+        height: 50px; /* Tinggi tombol */
+        display: inline-flex; /* Menampilkan elemen sebagai flex */
+        align-items: center; /* Memusatkan ikon secara vertikal */
+        justify-content: center; /* Memusatkan ikon secara horizontal */
+    }
+    
+    footer .btn-outline-light {
+        border: 1px solid #fff; /* Border putih pada tombol */
+        color: #fff; /* Warna teks tombol */
+    }
+    
+    footer .btn-outline-light:hover {
+        background-color: #fff; /* Warna latar belakang saat dihover */
+        color: #333; /* Warna teks tombol saat dihover */
+    }
+    
+    footer .text-uppercase {
+        text-transform: uppercase; /* Membuat teks menjadi huruf kapital semua */
+    }
+    
+    footer h5 {
+        margin-bottom: 20px; /* Jarak bawah judul */
+        font-size: 16px; /* Ukuran font judul */
+        font-weight: bold; /* Ketebalan font judul */
+    }
+    
+    footer .list-unstyled {
+        list-style: none; /* Menghilangkan bullet pada list */
+        padding-left: 0; /* Menghilangkan padding kiri pada list */
+    }
+    
+    footer .list-unstyled li {
+        margin-bottom: 10px; /* Jarak bawah tiap item list */
+    }
+    footer .container {
+        max-width: 1200px; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+        margin: 0 auto; /* Center align kontainer */
+        padding: 20px; /* Berikan padding untuk memberi ruang di sekitar konten */
+    }
+    
+    
+    footer .container p {
+        margin-bottom: 20px; /* Jarak bawah paragraf */
+    }
+    
+    footer .container img {
+        display: block; /* Menampilkan gambar sebagai block element */
+        margin: 0 auto; /* Memusatkan gambar */
+    }
+    
+    footer .fab, footer .fas {
+        font-size: 24px; /* Ukuran font ikon */
+    }
+    
+    footer .information li {
+        display: flex;
+        align-items: center;
+    }
+    
+    footer .col-lg-2, footer .col-lg-4 {
+        flex: 0 0 auto; /* Mengatur agar kolom fleksibel */
+        max-width: 20%; /* Mengatur agar kolom memiliki lebar maksimum */
+    }
+    
+    footer .col-lg-4 {
+        max-width: 33.3333%; /* Mengatur agar kolom Information memiliki lebar maksimum yang lebih besar */
+    }
+    
+    footer .text-left {
+        text-align: left; /* Mengatur teks menjadi rata kiri */
+    }
+    
+    footer .text-lg-start {
+        text-align: left !important; /* Mengatur teks menjadi rata kiri pada perangkat dengan ukuran layar besar */
+    }
+
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .btn-custom {
+      background-color: #ffffff !important; /* Warna latar belakang putih */
+      color: #000000; /* Warna teks hitam */
+
+  }
+  
+  .btn-custom:hover {
+      background-color: #f0f0f0; /* Warna latar belakang saat hover */
+      color: #000000; /* Warna teks saat hover */
+
+  }
+
+  .testimonial-card {
+    background-color: #0d0c0e;
+    color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  /* Style for customer image and company logo */
+.customer-img {
+  width: 80px;
+  height: 80px;
+  top: 10px;
+  left: 10px;
+  margin: 10px;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  right: 10px;
+  margin: 10px;
+}
+
+/* Optional: Card style adjustments */
+.card1 {
+  height: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        width: 100%;
+        transition: transform 0.2s ease-in-out;
+  color: white;
+  position: relative; /* Ensure relative positioning for absolute elements */
+  justify-content: center;
+}
+
+.card1:hover {
+  transform: translateY(-5px); /* Move card up on hover */
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1); /* Add shadow on hover */
+}
+
+.card-body1 {
+  color: white;
+  padding: 20px;
+  margin-top: 85px;
+  margin-bottom: 30px;
+  text-align: justify; /* Membuat teks rata kanan kiri */
+}
+
+
+.card-footer {
+  color: white;
+  background-color: #0d0c0e;
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+#testimonials {
+  margin-top: 130px; /* Atur margin top sesuai kebutuhan */
+}
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 25%; /* Aspect ratio 16:9 */
+  position: relative;
+}
+
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+ 
+}
+
+
+
+.contact-form .form-control {
+  background-color: #0d0c0e;
+  border-color: #323232;
+  color: white; /* Optional: Set text color to white */
+}
+
+.btn-primary{
+  background-color: white;
+  border-color: #323232;
+  color: black; /* Optional: Set text color to white */
+}
+
+.btn-primary:hover {
+  background-color: #ddd;
+  border-color: #323232;
+  color: black; /* Optional: Set text color to white */
+}
+
+.get-in-touch {
+  font-size: 18px; /* Sesuaikan ukuran font sesuai keinginan */
+  width: 100%; 
+}
+#products {
+  margin-top: -80px; /* Adjust the value to your desired margin size */
+}
+
+#location {
+  padding-top: 80px; /* Atur margin top sesuai kebutuhan */
+}
+#about {
+  padding-bottom: 80px;
+}
+
+
+/* Custom CSS untuk galeri */
+    .gallery .row .col-md-4 {
+      transition: transform 0.3s ease-in-out;
+    }
+    .gallery .row .col-md-4:hover {
+      transform: scale(1.05);
+    }
+
+    @media screen and (width: 375px) {
+      .map-responsive {
+        height: 350px;
+        width: 350px;
+        padding-bottom: 56.25%; /* Maintain the aspect ratio of 16:9 */
+      }
+      .get-in-touch {
+       margin-top: 35px;
+      }
+    }
+
+    @media screen and (min-width: 391px) and (max-width: 414px) {
+      .map-responsive {
+        height: 390px;
+        width: 390px;
+        padding-bottom: 56.25%; /* Maintain the aspect ratio of 16:9 */
+        padding: 100px;
+      }
+      .get-in-touch {
+       margin-top: 35px;
+      }
+    }
+
+    @media screen and (min-width: 376px) and (max-width: 390px) {
+      .map-responsive {
+        height: 365px;
+        width: 365px;
+        padding-bottom: 56.25%; /* Maintain the aspect ratio of 16:9 */
+      }
+      .get-in-touch {
+       margin-top: 35px;
+      }
+    }
+
+    @media screen and (min-width: 415px) and (max-width: 430px) {
+      .map-responsive {
+        height: 410px;
+        width: 410px;
+        padding-bottom: 56.25%; /* Maintain the aspect ratio of 16:9 */
+      }
+      .get-in-touch {
+       margin-top: 35px;
+      }
+    }
+
+    /* General styling for the gallery */
+.gallery {
+margin-top: 145px;
+}
+
+.gallery h1 {
+  font-family: 'gruppo', sans-serif;
+  color: #fff;
+}
+
+/* Styling for the images */
+.gallery img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the popup link */
+.popup-link {
+  display: block;
+  position: relative;
+}
+
+.popup-link::after {
+  content: '';
+  display: block;
+  padding-top: 75%;
+}
+
+.popup-link img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Smoother animation for the popup */
+.popup-link:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  transition: filter 0.3s, background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: white !important;
+}
+
+.social-icon:hover img {
+  filter: invert(1);
+}
+
+
+ </style>
+    
+</head>
+  <body>
+
+    
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- End Navbar Toggler -->
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo/main1.png" alt="Bootstrap" width="50" height="50">
+        </a>
+        <!-- End Cart button -->
+        <!-- Menu di kiri -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+      </div>
+        <div class="cart-container">
+          <a href="cart2.html" class="btn navbar-cart-btn">
+              <img src="images/logo/cart.png" alt="Cart" class="custom-cart-logo">
+          </a>
+      </div>
+</nav>
+
+<!-- Banner Section -->
+<div class="banner">
+    <div class="banner-content">
+      <h1>Welcome to FOOTSHOP</h1>
+      <p>Your one-stop shop for all things footwear</p>
+      <a href="#about" class="btn btn-primary btn-about">Get Started</a>
+    </div>
+  </div>
+
+<!-- About Us Section -->
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0 d-flex justify-content-center align-items-center flex-column">
+        <h2 class="mb-4 text-center">About Us</h2>
+        <p class="lead text-center">Welcome to FOOTSHOP, where passion meets fashion. We are dedicated to providing exclusive limited edition sneakers at unbeatable prices. Explore our curated collection and join us on our journey.</p>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <img src="images/logo/main1.png" class="img-fluid" alt="Footshop Logo" style="max-height: 500px; max-width: auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+<!-- Products Section -->
+<section id="products" class="py-5">
+  <div class="container">
+    <!-- MENU -->
+    <ul class="nav justify-content-center mt-1">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#" data-category="all">
+          <img src="images/logo/all1.png" alt="All" style="height: 60px;">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-category="nike">
+          <img src="images/logo/nike1.png" alt="Nike" style="height: 60px;">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-category="mschf">
+          <img src="images/logo/mschf1.png" alt="MSCHF" style="height: 60px;">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-category="new-balance">
+          <img src="images/logo/newbalance1.png" alt="New Balance" style="height: 60px;">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-category="converse">
+          <img src="images/logo/converse1.png" alt="Converse" style="height: 60px;">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-category="vans">
+          <img src="images/logo/vans1.png" alt="Vans" style="height: 60px;">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-category="skechers">
+          <img src="images/logo/skechers1.png" alt="Skechers" style="height: 60px;">
+        </a>
+      </li>
+    </ul>
+
+    <!-- PRODUCT CARDS -->
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="productContainer">
+      <!-- Product cards will be inserted here dynamically -->
+    </div>
+</section>
+
+
+
+    <!-- GALERY -->
+    <section class="gallery">
+      <div class="container">
+        <h1 class="mt-4 text-center">Galerry</h1>
+        
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4">
+            <a href="images/banner/b2.png" class="popup-link">
+              <img src="images/banner/b2.png" class="img-fluid rounded" alt="Foto 1">
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a href="images/banner/b3.png" class="popup-link">
+              <img src="images/banner/b3.png" class="img-fluid rounded" alt="Foto 2">
+            </a>
+          </div>
+          <div class="col-md-4 mb-4">
+            <a href="images/banner/b4.png" class="popup-link">
+              <img src="images/banner/b4.png" class="img-fluid rounded" alt="Foto 3">
+            </a>
+          </div>
+          <!-- Tambahkan lebih banyak gambar di sini -->
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    
+<section id="testimonials" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Testimonials</h2>
+    <div class="row">
+        <!-- Testimonial 1 -->
+        <div class="col-lg-4 mb-4">
+            <div class="card1">
+                <div class="card-img-top text-center mt-3">
+                    <img src="images/testimonial/t1.png" class="rounded-circle border border-secondary" style="width: 60px; height: 60px; position: absolute; top: 10px; left: 10px; margin: 20px;" alt="Customer Image 1">
+                    <img src="images/logo/brazil.png" style="width: 60px; height: 60px; position: absolute; top: 10px; right: 10px; margin: 20px;" alt="Company Logo 1">
+                </div>
+                <div class="card-body1">
+                    <p class="card-text">Shopping at Shoeshop was great! Helpful staff and impressive variety. Found stylish and comfy sneakers.</p>
+                </div>
+                <div class="card-footer">
+                    <h5 class="mb-1">Ronaldo Nazario</h5>
+                    <small class="d-block">Football Player</small>
+                    <small class="d-block">Brazil</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="col-lg-4 mb-4">
+            <div class="card1">
+                <div class="card-img-top text-center mt-3">
+                    <img src="images/testimonial/t2.png" class="rounded-circle border border-secondary" style="width: 60px; height: 60px; position: absolute; top: 10px; left: 10px; margin: 20px;" alt="Customer Image 2">
+                    <img src="images/logo/france.png" style="width: 60px; height: 60px; position: absolute; top: 10px; right: 10px; margin: 20px;" alt="Company Logo 2">
+                </div>
+                <div class="card-body1">
+                    <p class="card-text">Loved shopping at Shoeshop! Friendly staff and great selection. Found my perfect stylish sneakers.</p>
+                </div>
+                <div class="card-footer">
+                    <h5 class="mb-1">David Ginola</h5>
+                    <small class="d-block">Football Player</small>
+                    <small class="d-block">France</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="col-lg-4 mb-4">
+            <div class="card1">
+                <div class="card-img-top text-center mt-3">
+                    <img src="images/testimonial/t3.png" class="rounded-circle border border-secondary" style="width: 60px; height: 60px; position: absolute; top: 10px; left: 10px; margin: 20px;" alt="Customer Image 3">
+                    <img src="images/logo/france.png" style="width: 60px; height: 60px; position: absolute; top: 10px; right: 10px; margin: 20px;" alt="Company Logo 3">
+                </div>
+                <div class="card-body1">
+                    <p class="card-text">Fantastic experience at Shoeshop! Wide range of shoes and great service. Found the best sneakers!</p>
+                </div>
+                <div class="card-footer">
+                    <h5 class="mb-1">Zinédine Zidane</h5>
+                    <small class="d-block">Football Player</small>
+                    <small class="d-block">France</small>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- Section Location -->
+<section id="location" class="mt-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Location</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="map-responsive">
+          <!-- Google Maps Embed -->
+          <iframe 
+          <iframe style="filter: invert(100%) grayscale(1)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2735.0824740841813!2d110.32499989579402!3d-7.8076459009749595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7af9fe4aa8b4a3%3A0x241b6b309a4def9a!2sKos%20BARBAR%20PUTRA%20Pratiwi!5e0!3m2!1sid!2sid!4v1721191878083!5m2!1sid!2sid"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Contact Us -->
+<section id="contact" class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2 class="text-left mb-4">Contact Us</h2>
+          <form action="https://formspree.io/f/mbjnbgpr" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+
+
+
+      
+      <div class="col-md-6">
+        <!-- Get in Touch -->
+        <div class="get-in-touch">
+          <h2 class=" mb-4">Get in Touch</h2>
+          <p>Feel free to contact us for any questions or inquiries about our services, products, or business matters. We're here to help!</p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-phone mb-3"></i> +62 812 5989 0076</li>
+            <li><i class="fas fa-envelope mb-3"></i> maajid808@gmail.com</li>
+            <li><i class="fas fa-map-marker-alt mb-3"></i> Gamping Kidul,
+              <br>Ambarketawang, 
+              <br>Kec. Gamping,
+              <br>Kabupaten Sleman, 
+              <br>Daerah Istimewa Yogyakarta 55294</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <footer class="text-white text-center">
+      <div class="container p-3">
+<!-- Social icons -->
+<section class="mb-4 text-center mt-4">
+  <!-- WhatsApp -->
+  <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://wa.me/6281259890076" role="button">
+      <img src="images/logo/wa.png" alt="WhatsApp">
+  </a>
+
+  <!-- Instagram -->
+  <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a.maajid_/" role="button">
+      <img src="images/logo/ig.png" alt="Instagram">
+  </a>
+
+  <!-- Shopee -->
+  <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://shopee.co.id" role="button">
+      <img src="images/logo/shopee.png" alt="Shopee">
+  </a>
+
+  <!-- Tokopedia -->
+  <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.tokopedia.com" role="button">
+      <img src="images/logo/tokopedia.png" alt="Tokopedia">
+  </a>
+
+  <!-- TikTok -->
+  <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.tiktok.com/@jediyspace" role="button">
+      <img src="images/logo/tiktok.png" alt="TikTok">
+  </a>
+</section>
+<!-- Social icons -->
+
+  
+          <!-- Section: Text -->
+          <section class="text-center mt-5">
+              <img src="images/logo/main1.1.png" alt="FOOTSHOP Logo" width="300" height="128">
+               </section>
+          <!-- Section: Text -->
+           <!-- Section: Text -->
+          <section class="text-center mt-4">
+              <p>FOOTSHOP brings you a handpicked selection of high-quality, limited-edition products at affordable prices. Specializing in unique items that cater to diverse tastes, from stylish apparel to trendy footwear and exclusive accessories. Explore our wide range and discover luxury and value, making FOOTSHOP your ultimate destination for fashion-forward finds.</p>
+          <p>FOOTSHOP</p>
+          </section>
+          <!-- Section: Text -->
+  
+      </div>
+  </footer>
+
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<!-- Magnific Popup JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<!-- Script untuk inisialisasi popup -->
+<script>
+  $(document).ready(function() {
+    $('.popup-link').magnificPopup({
+      type: 'image',
+      gallery:{
+        enabled:true
+      },
+      mainClass: 'mfp-fade',
+      removalDelay: 300,
+      image: {
+        titleSrc: 'title'
+      },
+      // Opsi tambahan untuk mengatur ukuran popup
+      callbacks: {
+        open: function() {
+        }
+      }
+    });
+  });
+</script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.querySelector('.navbar');
+        const bannerHeight = document.querySelector('.banner').clientHeight;
+        const aboutSection = document.getElementById('about').offsetTop;
+        
+        // Tambahkan event listener untuk mengubah warna navbar saat scroll
+        window.addEventListener('scroll', function() {
+            if (window.scrollY >= aboutSection) {
+                navbar.classList.add('navbar-black');
+            } else {
+                navbar.classList.remove('navbar-black');
+            }
+        });
+    
+        // Panggil fungsi sekali saat halaman dimuat untuk menentukan warna awal navbar
+        updateNavbarColor();
+    });
+    
+    // Fungsi untuk menentukan warna awal navbar saat halaman dimuat
+    function updateNavbarColor() {
+        const navbar = document.querySelector('.navbar');
+        const bannerHeight = document.querySelector('.banner').clientHeight;
+        const aboutSection = document.getElementById('about').offsetTop;
+    
+        if (window.scrollY >= aboutSection) {
+            navbar.classList.add('navbar-black');
+        } else {
+            navbar.classList.remove('navbar-black');
+        }
+    }
+  </script>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const variantImages = document.querySelectorAll('.variant-img');
+    
+        variantImages.forEach(variant => {
+            variant.addEventListener('mouseover', function() {
+                const mainImage = this.closest('.card').querySelector('.main-img');
+                mainImage.src = this.src;
+            });
+        });
+    });
+  </script>
+
+   
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = new bootstrap.Carousel(document.getElementById('carouselExampleIndicators'), {
+              interval: 5000, // Atur interval sesuai kebutuhan
+              touch: true // Aktifkan dukungan swipe untuk perangkat mobile
+            });
+          });
+      // Array of product objects
+      const products = [
+                {
+                    id: 'nike2',
+                    imgSrc: 'images/cards/nikexnewjeansairmax90amdsnakesswoosh.png',
+                    name: 'Nike x New Jeans Air Max 90s AMD',
+                    price: '1999000',
+                    link: 'nike2.html',
+                    category: 'nike',
+                    variants: ['images/cards/nikexnewjeansairmax90amdsnakesswoosh.png', 'images/cards/nikexnewjeansairmax90amdsnakesswoosh2.png']
+                },
+                {   
+                    id: 'mschf',
+                    imgSrc: 'images/cards/mschfxlilnas.png',
+                    name: 'MSCHF x Lil Nas Air Max 97s',
+                    price: '16599000',
+                    link: 'mschf.html',
+                    category: 'mschf',
+                    variants: ['images/cards/mschfxlilnas.png']
+                },
+                {
+                    id: 'nb1',
+                    imgSrc: 'images/cards/nbxmiumiu530slsuede.png',
+                    name: 'New Balance x Miu-Miu 530s',
+                    price: '1829000',
+                    link: 'nb1.html',
+                    category: 'new-balance',
+                    variants: ['images/cards/nbxmiumiu530slsuede.png']
+                },
+                {
+                    id: 'nb3',
+                    imgSrc: 'images/cards/nbxbodega9060.png',
+                    name: 'New Balance x Bodega 9060',
+                    price: '2999000',
+                    link: 'nb3.html',
+                    category: 'new-balance',
+                    variants: ['images/cards/nbxbodega9060.png']
+                },
+                {
+                    id: 'c2',
+                    imgSrc: 'images/cards/conversexliverpoolfc76.png',
+                    name: 'Converse x Liverpool FC 76',
+                    price: '2299999',
+                    link: 'c2.html',
+                    category: 'converse',
+                    variants: ['images/cards/conversexliverpoolfc76.png']
+                },
+                {
+                    id: 'v2',
+                  imgSrc: 'images/cards/vansxststyle36.png',
+                  name: 'Vans x Stranger Things',
+                  price: '2599999',
+                  link: 'v2.html',
+                  category: 'vans',
+                  variants: ['images/cards/vansxststyle36.png']
+              },
+                {
+                    id: 's1',
+                    imgSrc: 'images/cards/skechersxdojacatblack.png',
+                    name: 'Skechers x Doja Cat Hi Ryze',
+                    price: '1999999',
+                    link: 's1.html',
+                    category: 'skechers',
+                    variants: ['images/cards/skechersxdojacatblack.png', 'images/cards/skechersxdojacatwhite.png']
+                },
+            
+            ];
+
+      // Function to handle adding product to cart
+const addToCart = (product) => {
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from Local Storage
+
+    // Check if product is already in cart
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingProductIndex !== -1) {
+        // Product already exists in cart, increase quantity
+        cart[existingProductIndex].quantity++;
+    } else {
+        // Product does not exist in cart, add it
+        cart.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+    }
+
+    // Save updated cart back to Local Storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Product added to cart!');
+};
+
+// Function to create a product card
+const createProductCard = (product) => {
+    const col = document.createElement('div');
+    col.className = 'col-lg-1 col-md-3 col-sm-6'; // Adjust column width for responsiveness
+    col.innerHTML = `
+        <a href="${product.link}" class="text-decoration-none text-reset">
+            <div class="card h-100">
+                <img src="${product.imgSrc}" class="card-img-top main-img" alt="${product.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">Rp. ${product.price}</p>
+                    ${product.variants ? createVariantImages(product.variants) : ''}
+                </div>
+            </div>
+        </a>
+    `;
+
+    return col;
+};
+
+
+  
+
+
+    // Function to create variant images
+    const createVariantImages = (variants) => {
+        return `
+            <div class="variant-images">
+                ${variants.map(variant => `<img src="${variant}" class="variant-img" alt="Variant Image">`).join('')}
+            </div>
+        `;
+    };
+
+    // Function to display products based on selected category
+    const displayProducts = (category) => {
+        productContainer.innerHTML = ''; // Clear previous products
+        const filteredProducts = category === 'all' ? products : products.filter(product => product.category === category);
+        filteredProducts.forEach(product => {
+            const productCard = createProductCard(product);
+            productContainer.appendChild(productCard);
+    
+        });
+
+
+        productCard.addEventListener('click', (e) => {
+            const clickedElement = e.target;
+            if (!clickedElement.classList.contains('btn-add-to-cart')) {
+                window.location.href = product.link;
+            }
+        });
+        // Add event listeners for variant images
+        document.querySelectorAll('.variant-img').forEach(img => {
+            img.addEventListener('mouseenter', (e) => {
+                const mainImg = e.currentTarget.closest('.card').querySelector('.main-img');
+                mainImg.src = e.currentTarget.src;
+                currentVariantSrc = e.currentTarget.src;
+            });
+        });
+
+        // Store original image src
+        document.querySelectorAll('.main-img').forEach(img => {
+            img.setAttribute('data-original-src', img.src);
+        });
+
+        // Handle mouse leave event on the card to revert to original image if no variant is being hovered
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseleave', () => {
+                const mainImg = card.querySelector('.main-img');
+                if (!currentVariantSrc) {
+                    mainImg.src = mainImg.getAttribute('data-original-src');
+                }
+            });
+        });
+    };
+
+    // Event listener for category menu
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = e.currentTarget.getAttribute('data-category');
+            displayProducts(category);
+
+            // Remove active class from all links
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            // Add active class to clicked link
+            e.currentTarget.classList.add('active');
+        });
+    });
+
+    // Display all products by default
+    displayProducts('all');
+
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+
+</body>
+</html>

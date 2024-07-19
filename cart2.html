@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOTSHOP</title>
+    <link rel="icon" type="image/x-icon" href="images/logo/main1.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+
+        
+        body {
+
+            background-color: black !important;
+            margin: 20px;
+            color: white !important;
+            
+        }
+        
+        .container {
+   
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Gruppo', sans-serif;
+            
+        }
+        
+        h2 {
+            margin-top: 140px;
+            margin-bottom: 20px;
+            color: white !important;
+        }
+        
+        .cart-section {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        
+        .cart-container {
+            max-height: 650px; /* Set a maximum height */
+            overflow-y: auto; /* Enable vertical scroll if needed */
+            border-radius: 10px;
+            
+            
+            
+        }
+        
+        .receipt-container {
+            width: 50%;
+            max-height: 650px; /* Set a maximum height */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow-y: auto; /* Enable vertical scroll if needed */
+            border-color: #323232;
+            background-color: #0d0c0e;
+            padding: 20px;
+            
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+
+            
+        }
+        
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        .cart-item-details {
+            
+            flex-grow: 1;
+        }
+        
+        .cart-item-details h3 {
+            margin-bottom: 5px;
+            color: white !important;
+        }
+        
+        .cart-item-details p {
+            margin-bottom: 10px;
+
+        }
+        
+        .cart-item-details .price {
+            font-weight: bold;
+            
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            
+        }
+        
+        .variant-selection {
+            margin-bottom: 10px;
+            color: #9999;
+        }
+        
+        .variant-images {
+            display: flex;
+            gap: 10px;
+            
+        }
+        
+        .variant-image {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: border-color 0.3s ease;
+            
+        }
+        
+        .variant-image:hover {
+            border-color: #ccc;
+        }
+        
+        .size-selection .btn {
+            margin: 2px;
+        }
+        
+        .remove-item {
+            cursor: pointer;
+            color: red;
+            margin-left: 10px;
+            
+        }
+        
+        .receipt-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: white !important;
+            
+            
+        }
+        
+        .receipt-table th,
+        .receipt-table td {
+            border: none;
+            padding: 10px;
+            text-align: left;
+            
+            
+            
+        }
+        
+        .receipt-table th {
+            font-weight: bold;
+            
+            
+        }
+        
+        .receipt-table .total-row {
+            border-top: 2px solid #000;
+            
+        }
+        
+        .receipt-table .grand-total {
+            font-weight: bold;
+        }
+        
+        .btn-checkout {
+            text-align: right; /* Posisikan tombol ke kanan */
+            margin-top: 20px;
+        }
+        
+        .btn-checkout .btn {
+            background-color: white;
+            color: #323232; /* Warna teks hitam */
+            border-color: #323232; /* Warna border hitam */
+        }
+        
+        .size-selection .btn {
+            background-color: #0d0c0e;
+            color: #323232; /* White text */
+            position: relative;
+            transition: background-image 0.3s ease;
+            border-color: #323232; 
+        }
+    
+        .size-selection .btn:hover {
+            color: white; /* Black text on hover */
+            border-color: white; 
+        }
+    
+        .size-selection .btn-check:checked + .btn {
+            background-color: white;
+            color: #323232; /* Black text when selected */
+            border-color: #323232; /* White border color */
+        }
+
+        .quantity-input {
+            margin-top: 10px;
+            width: 50px;
+            text-align: center;
+            background-color: #0d0c0e; 
+            color: #ffffff; /* Warna teks hitam */
+            border: 1px solid #323232; /* Border abu-abu */
+        }
+
+        
+        footer {
+            margin-top:50px;
+            color: #fff; /* Warna teks */
+            padding: 40px 0; /* Padding atas dan bawah */
+        }
+        
+        footer a {
+            color: #fff; /* Warna tautan */
+            text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+        }
+        
+        footer a:hover {
+            color: #ddd; /* Warna tautan saat dihover */
+        }
+        
+        footer .btn-floating {
+            border-radius: 50%; /* Membuat tombol menjadi bulat */
+            width: 50px; /* Lebar tombol */
+            height: 50px; /* Tinggi tombol */
+            display: inline-flex; /* Menampilkan elemen sebagai flex */
+            align-items: center; /* Memusatkan ikon secara vertikal */
+            justify-content: center; /* Memusatkan ikon secara horizontal */
+        }
+        
+        footer .btn-outline-light {
+            border: 1px solid #fff; /* Border putih pada tombol */
+            color: #fff; /* Warna teks tombol */
+        }
+        
+        footer .btn-outline-light:hover {
+            background-color: #fff; /* Warna latar belakang saat dihover */
+            color: #333; /* Warna teks tombol saat dihover */
+        }
+        
+        footer .text-uppercase {
+            text-transform: uppercase; /* Membuat teks menjadi huruf kapital semua */
+        }
+        
+        footer h5 {
+            margin-bottom: 20px; /* Jarak bawah judul */
+            font-size: 16px; /* Ukuran font judul */
+            font-weight: bold; /* Ketebalan font judul */
+        }
+        
+        footer .list-unstyled {
+            list-style: none; /* Menghilangkan bullet pada list */
+            padding-left: 0; /* Menghilangkan padding kiri pada list */
+        }
+        
+        footer .list-unstyled li {
+            margin-bottom: 10px; /* Jarak bawah tiap item list */
+        }
+        footer .container {
+            max-width: 1200px; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+            margin: 0 auto; /* Center align kontainer */
+            padding: 20px; /* Berikan padding untuk memberi ruang di sekitar konten */
+        }
+        
+        
+        footer .container p {
+            margin-bottom: 20px; /* Jarak bawah paragraf */
+        }
+        
+        footer .container img {
+            display: block; /* Menampilkan gambar sebagai block element */
+            margin: 0 auto; /* Memusatkan gambar */
+        }
+        
+        footer .fab, footer .fas {
+            font-size: 24px; /* Ukuran font ikon */
+        }
+        
+        footer .information li {
+            display: flex;
+            align-items: center;
+        }
+        
+        footer .col-lg-2, footer .col-lg-4 {
+            flex: 0 0 auto; /* Mengatur agar kolom fleksibel */
+            max-width: 20%; /* Mengatur agar kolom memiliki lebar maksimum */
+        }
+        
+        footer .col-lg-4 {
+            max-width: 33.3333%; /* Mengatur agar kolom Information memiliki lebar maksimum yang lebih besar */
+        }
+        
+        footer .text-left {
+            text-align: left; /* Mengatur teks menjadi rata kiri */
+        }
+        
+        footer .text-lg-start {
+            text-align: left !important; /* Mengatur teks menjadi rata kiri pada perangkat dengan ukuran layar besar */
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-center p {
+            font-size: 1rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .text-center {
+            max-width: 1000px; /* Sesuaikan dengan lebar maksimum yang Anda inginkan */
+            margin: auto; /* Untuk membuat section menjadi center di tengah halaman */
+        }
+        
+        
+
+        @media (max-width: 375px) {
+            .receipt-container {
+                margin-top: 100px; /* Sesuaikan margin sesuai kebutuhan */
+            }
+            .cart-section {
+                display: flex;
+                flex-direction: column-reverse; /* Membalikkan urutan konten di dalam .cart-section */
+            }
+            .cart-container {
+                order: 2; /* Mengatur urutan konten .cart-container menjadi terakhir */
+            }
+            .receipt-container {
+                order: 1; /* Mengatur urutan konten .receipt-container menjadi pertama */
+            }
+            .cart-container {
+                justify-content: center;
+                margin-left: -15px;
+                margin-right: -15px;
+                width: 108%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 500px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+
+            }
+            .receipt-container {
+                justify-content: center;
+                margin-left: -10px;
+                margin-right: px;
+                width: 107%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+            }
+
+            footer {
+                justify-content: center;
+                width: 100%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                color: #fff; /* Warna teks */
+                
+
+            }
+            .text-center {
+                margin-top: 0.5rem;
+            }
+            
+            .text-center p {
+                font-size: 0.8rem; /* Smaller font size */
+                line-height: 1.25;   /* Adjust line height */
+                margin-bottom: 0.5rem; /* Less margin */
+            }
+        }
+
+        @media (max-width: 414px) {
+            .receipt-container {
+                margin-top: 100px; /* Sesuaikan margin sesuai kebutuhan */
+            }
+            .cart-section {
+                display: flex;
+                flex-direction: column-reverse; /* Membalikkan urutan konten di dalam .cart-section */
+            }
+            .cart-container {
+                order: 2; /* Mengatur urutan konten .cart-container menjadi terakhir */
+            }
+            .receipt-container {
+                order: 1; /* Mengatur urutan konten .receipt-container menjadi pertama */
+            }
+            .cart-container {
+                justify-content: center;
+                margin-left: -15px;
+                margin-right: -15px;
+                width: 106.5%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 500px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+
+            }
+            .receipt-container {
+                justify-content: center;
+                margin-left: -10px;
+                margin-right: px;
+                width: 105.5%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+            }
+
+            footer {
+                justify-content: center;
+                width: 100%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                color: #fff; /* Warna teks */
+                
+
+            }
+            .text-center {
+                margin-top: 0.5rem;
+            }
+            
+            .text-center p {
+                font-size: 0.8rem; /* Smaller font size */
+                line-height: 1.25;   /* Adjust line height */
+                margin-bottom: 0.5rem; /* Less margin */
+            }
+        }
+
+        @media (max-width: 390px) {
+            .receipt-container {
+                margin-top: 100px; /* Sesuaikan margin sesuai kebutuhan */
+            }
+            .cart-section {
+                display: flex;
+                flex-direction: column-reverse; /* Membalikkan urutan konten di dalam .cart-section */
+            }
+            .cart-container {
+                order: 2; /* Mengatur urutan konten .cart-container menjadi terakhir */
+            }
+            .receipt-container {
+                order: 1; /* Mengatur urutan konten .receipt-container menjadi pertama */
+            }
+            .cart-container {
+                justify-content: center;
+                margin-left: -15px;
+                margin-right: -15px;
+                width: 106.5%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 500px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+
+            }
+            .receipt-container {
+                justify-content: center;
+                margin-left: -10px;
+                margin-right: px;
+                width: 107%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+            }
+
+            footer {
+                justify-content: center;
+                width: 100%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                color: #fff; /* Warna teks */
+                
+
+            }
+            .text-center {
+                margin-top: 0.5rem;
+            }
+            
+            .text-center p {
+                font-size: 0.8rem; /* Smaller font size */
+                line-height: 1.25;   /* Adjust line height */
+                margin-bottom: 0.5rem; /* Less margin */
+            }
+        }
+
+        @media (max-width: 430px) {
+            .receipt-container {
+                margin-top: 100px; /* Sesuaikan margin sesuai kebutuhan */
+            }
+            .cart-section {
+                display: flex;
+                flex-direction: column-reverse; /* Membalikkan urutan konten di dalam .cart-section */
+            }
+            .cart-container {
+                order: 2; /* Mengatur urutan konten .cart-container menjadi terakhir */
+            }
+            .receipt-container {
+                order: 1; /* Mengatur urutan konten .receipt-container menjadi pertama */
+            }
+            .cart-container {
+                justify-content: center;
+                margin-left: -15px;
+                margin-right: -15px;
+                width: 106.5%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 500px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+
+            }
+            .receipt-container {
+                justify-content: center;
+                margin-left: -10px;
+                margin-right: px;
+                width: 106%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                margin: 1 auto; /* Memastikan container berada di tengah */
+            }
+
+            footer {
+                justify-content: center;
+                width: 100%; /* Menjadikan container lebar 100% dari parent container */
+                max-width: 800px; /* Atur lebar maksimum sesuai kebutuhan */
+                color: #fff; /* Warna teks */
+                
+
+            }
+            .text-center {
+                margin-top: 0.5rem;
+            }
+            
+            .text-center p {
+                font-size: 0.8rem; /* Smaller font size */
+                line-height: 1.25;   /* Adjust line height */
+                margin-bottom: 0.5rem; /* Less margin */
+            }
+        }
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            transition: filter 0.3s, background-color 0.3s;
+          }
+          
+          .social-icon:hover {
+            background-color: white !important;
+          }
+          
+          .social-icon:hover img {
+            filter: invert(1);
+          }
+          /* Gaya untuk SweetAlert2 dengan tema hitam */
+.swal2-popup {
+    background-color: black;
+    color: #ffffff; /* Warna teks putih */
+}
+
+.swal2-title {
+    color: #ffffff; /* Warna judul putih */
+}
+
+.swal2-confirm {
+    background-color: red; /* Warna tombol konfirmasi biru */
+    color: #ffffff; /* Warna teks tombol konfirmasi putih */
+}
+
+.swal2-cancel {
+    background-color: white; /* Warna tombol batal merah */
+    color: black; /* Warna teks tombol batal putih */
+}
+
+.swal2-button {
+    border-color: #ffffff; /* Warna border tombol putih */
+}
+
+.swal2-icon {
+    color: #ffffff; /* Warna ikon putih */
+}
+
+.swal2-icon.swal2-success {
+    border-color: #ffffff; /* Warna border ikon sukses putih */
+}
+
+.swal2-icon.swal2-error {
+    border-color: #ffffff; /* Warna border ikon error putih */
+}
+
+.swal2-icon.swal2-warning {
+    color: red; 
+    border-color: #ffffff; /* Warna border ikon warning putih */
+}
+
+
+        
+        
+        
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- End Navbar Toggler -->
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo/main1.png" alt="Bootstrap" width="50" height="50">
+        </a>        
+        <!-- End Cart button -->
+        <!-- Menu di kiri -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+            </ul>
+        </div>
+        <div class="cartt-container">
+            <a href="cart2.html" class="btn navbar-cart-btn">
+                <img src="images/logo/cart.png" alt="Cart" class="custom-cart-logo">
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <div class="container">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-section">
+            <div class="cart-container">
+                <div id="cartItems"></div>
+            </div>
+            <div class="receipt-container">
+                <h3>Receipt</h3>
+                <table class="receipt-table" id="receiptTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="4" class="text-right">Grand Total:</td>
+                            <td class="grand-total" id="grandTotal">Rp. 0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="btn-checkout">
+                    <a href="checkout.html" class="btn btn-primary">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Footer -->
+<footer class="text-white text-center">
+    <div class="container p-4">
+
+
+
+
+<!-- Social icons -->
+<section class="mb-4 text-center mt-4">
+    <!-- WhatsApp -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://wa.me/6281259890076" role="button">
+        <img src="images/logo/wa.png" alt="WhatsApp">
+    </a>
+  
+    <!-- Instagram -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/a.maajid_/" role="button">
+        <img src="images/logo/ig.png" alt="Instagram">
+    </a>
+  
+    <!-- Shopee -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://shopee.co.id" role="button">
+        <img src="images/logo/shopee.png" alt="Shopee">
+    </a>
+  
+    <!-- Tokopedia -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.tokopedia.com" role="button">
+        <img src="images/logo/tokopedia.png" alt="Tokopedia">
+    </a>
+  
+    <!-- TikTok -->
+    <a class="social-icon btn btn-outline-light btn-floating m-1" href="https://www.tiktok.com/@jediyspace" role="button">
+        <img src="images/logo/tiktok.png" alt="TikTok">
+    </a>
+  </section>
+  <!-- Social icons -->
+
+        <!-- Section: Text -->
+        <section class="text-center mt-5">
+            <img src="images/logo/main1.1.png" alt="FOOTSHOP Logo" width="300" height="128">
+             </section>
+        <!-- Section: Text -->
+         <!-- Section: Text -->
+        <section class="text-center mt-4">
+            <p>FOOTSHOP brings you a handpicked selection of high-quality, limited-edition products at affordable prices. Specializing in unique items that cater to diverse tastes, from stylish apparel to trendy footwear and exclusive accessories. Explore our wide range and discover luxury and value, making FOOTSHOP your ultimate destination for fashion-forward finds.</p>
+        <p>FOOTSHOP</p>
+        </section>
+        <!-- Section: Text -->
+
+    </div>
+</footer>
+<!-- Footer -->
+
+
+
+
+
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const grandTotalElement = document.getElementById('grandTotal');
+            const receiptTableBody = document.getElementById('receiptTable').querySelector('tbody');
+        
+            // Ambil data dari localStorage
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+            // Fungsi untuk menampilkan item di keranjang
+            function renderCartItems() {
+                cartItemsContainer.innerHTML = '';
+                receiptTableBody.innerHTML = '';
+        
+                if (cartItems.length === 0) {
+                    cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                    grandTotalElement.textContent = 'Rp. 0';
+                    return;
+                }
+        
+                let totalPrice = 0;
+        
+                cartItems.forEach((item, index) => {
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="cart-item-details">
+                                <h3>${item.name}</h3>
+                                <div class="variant-selection">
+                                    <label for="variant${index}">Choose Variant:</label>
+                                    <div class="variant-images" id="variant${index}">
+                                        <!-- Tampilkan gambar varian yang tersedia -->
+                                        ${renderVariantImages(item.variant)}
+                                    </div>
+                                </div>
+                                <div class="size-selection">
+                                    <label for="size${index}">Size:</label>
+                                    <div class="btn-group" role="group" aria-label="Size selection" id="size${index}">
+                                        ${renderSizeButtons(item.size, index)}
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="quantity${index}">Quantity:</label>
+                                    <input type="number" id="quantity${index}" class="quantity-input" value="${item.quantity}" min="1">
+                                    <span class="price">${formatPrice(item.price * item.quantity)}</span>
+                                    <span class="remove-item" onclick="removeItem(${index})">Remove</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cartItemsContainer.innerHTML += itemHTML;
+        
+                    const receiptRowHTML = `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.size}</td>
+                            <td>${item.quantity}</td>
+                            <td>${formatPrice(item.price)}</td>
+                            <td>${formatPrice(item.price * item.quantity)}</td>
+                        </tr>
+                    `;
+                    receiptTableBody.innerHTML += receiptRowHTML;
+        
+                    totalPrice += item.price * item.quantity;
+                });
+        
+                // Update total harga dalam format Rupiah
+                grandTotalElement.textContent = ` ${formatPrice(totalPrice)}`;
+        
+                // Simpan kembali cartItems yang diperbarui ke dalam localStorage
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+        
+            // Render gambar varian berdasarkan pilihan varian saat ini
+            function renderVariantImages(selectedVariant) {
+                const variantImages = {
+                    'nike1': [
+                        'images/feeds/nike1/nikep1.png',
+                    ],
+                    'nike2': [
+                        'images/feeds/nike2/nikep1.png',
+                    ]
+                };
+        
+                const images = variantImages[selectedVariant];
+        
+                if (!images) return '';
+        
+                return images.map((image, idx) => `
+                    <img src="${image}" alt="Variant ${idx + 1}" data-variant="${idx + 1}" class="variant-image ${selectedVariant == 'nike1' ? 'active' : ''}" onclick="changeVariant(${cartItems.length}, ${idx + 1}, '${selectedVariant}')">
+                `).join('');
+            }
+        
+            // Render tombol ukuran berdasarkan pilihan ukuran saat ini
+            function renderSizeButtons(selectedSize, itemIndex) {
+                const sizes = ['35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'];
+                return sizes.map(size => `
+                    <input type="radio" class="btn-check" name="size${itemIndex}" id="size${itemIndex}${size}" ${selectedSize == size ? 'checked' : ''}>
+                    <label class="btn btn-outline-primary" for="size${itemIndex}${size}">${size}</label>
+                `).join('');
+            }
+        
+            // Fungsi untuk menghapus item dari keranjang
+window.removeItem = function (index) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, remove it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Menghapus item dari array cartItems
+            cartItems.splice(index, 1);
+            // Render ulang item keranjang
+            renderCartItems();
+            // Tampilkan pesan sukses
+            Swal.fire(
+                'Removed!',
+                'The item has been removed.',
+                'success'
+            );
+        }
+    });
+};
+
+        
+            // Fungsi untuk mengubah varian
+            window.changeVariant = function (cartIndex, variantIndex, variantName) {
+                cartItems[cartIndex].variant = variantIndex;
+                cartItems[cartIndex].variantName = variantName;
+                renderCartItems();
+            };
+        
+            // Event listener untuk mengubah kuantitas item
+            cartItemsContainer.addEventListener('input', function (event) {
+                const target = event.target;
+                if (target.classList.contains('quantity-input')) {
+                    const index = parseInt(target.id.replace('quantity', ''));
+                    const newQuantity = parseInt(target.value);
+        
+                    if (newQuantity >= 1) {
+                        cartItems[index].quantity = newQuantity;
+                        renderCartItems();
+                    } else {
+                        alert('Quantity must be at least 1.');
+                        target.value = cartItems[index].quantity;
+                    }
+                }
+            });
+        
+            // Event listener untuk mengubah ukuran item
+            cartItemsContainer.addEventListener('change', function (event) {
+                const target = event.target;
+                if (target.classList.contains('btn-check')) {
+                    const index = parseInt(target.name.replace('size', ''));
+                    const newSelectedSize = target.nextElementSibling.textContent.trim();
+        
+                    cartItems[index].size = newSelectedSize;
+                    renderCartItems();
+                }
+            });
+        
+            // Fungsi untuk memformat harga ke dalam format Rupiah
+            function formatPrice(price) {
+                return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(price);
+            }
+        
+            // Panggil fungsi untuk menampilkan item di keranjang saat halaman dimuat
+            renderCartItems();
+        });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
+</body>
+</html>

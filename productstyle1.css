@@ -1,0 +1,223 @@
+
+body {
+    font-family: 'Gruppo', sans-serif;
+}
+.row.justify-content-center {
+    margin-top: 70px;
+    padding: 100px;
+}
+
+.variant-selection {
+    margin-bottom: 20px;
+}
+
+.carousel-item img {
+    border-radius: 20px; /* Sesuaikan nilai border-radius sesuai keinginan */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+font-size: 1rem; /* Atur ukuran font ikon */
+width: 20px; /* Atur lebar ikon */
+height: 20px; /* Atur tinggi ikon */
+line-height: 1; /* Sesuaikan garis vertikal dan horizontal */
+}
+
+
+/* Mengatur ukuran thumbnail carousel */
+.carousel-thumbnails img {
+width: 105px; /* Sesuaikan dengan ukuran yang diinginkan */
+height: auto; /* Biarkan tinggi mengikuti proporsi gambar */
+margin: 0 5px; /* Atur jarak antara thumbnail */
+cursor: pointer; /* Ubah kursor menjadi pointer saat dihover */
+border-radius: 10px;
+}
+
+.variant-images {
+display: flex;
+gap: 10px;
+border-radius: 10px;
+}
+
+.variant-image {
+width: 80px;
+height: 80px;
+cursor: pointer;
+border: 1.5px solid transparent;
+transition: border-color 0.3s ease;
+border-radius: 10px;
+}
+
+.variant-image:hover {
+border-color: #323232;
+}
+
+.variant-image.active {
+border-color: white !important;
+}
+
+.product-description {
+text-align: justify;
+color: #555; /* Warna teks untuk deskripsi produk */
+font-size: 16px; /* Ukuran font */
+line-height: 1.6; /* Jarak antar baris */
+margin-top: 10px; /* Jarak atas */
+}
+
+.product-details {
+max-width: 690px;
+}
+
+.size-selection .btn {
+background-color: black; /* Dark gray background for size buttons */
+color: #323232; /* White text */
+position: relative;
+transition: background-image 0.3s ease;
+border-color: #323232; 
+}
+
+.size-selection .btn:before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-size: cover;
+opacity: 0.5;
+z-index: 0;
+border-radius: 0.25rem; /* Default Bootstrap border radius */
+}
+
+.size-selection .btn:hover {
+background-color: white; /* White background on hover */
+color: white; /* Black text on hover */
+border-color: white; 
+}
+
+.size-selection .btn-check:checked + .btn {
+background-color: white; /* White background when selected */
+color: #323232; /* Black text when selected */
+background-image: url('images/cards/background.png'); /* Set background image when selected */
+border-color: #323232; /* White border color */
+}
+
+.size-selection .btn span {
+position: relative;
+z-index: 1;
+}
+
+.btn.btn-primary {
+background-image: url('images/cards/backgroundinvert.png'); /* Background image for Add to Cart button */
+background-size: cover;
+background-position: center;
+border-color: white; /* White border color */
+color: #323232; /* Black text color */
+}
+
+#quantity {
+background-image: url('images/cards/background.png'); /* Background image for quantity input */
+background-size: cover;
+background-position: center;
+border-color: #323232; /* Border color */
+color: white; /* Text color */
+padding: 10px; /* Padding untuk penampilan yang lebih baik */
+}
+
+.product-details h2 {
+font-size: 40px;
+margin-top: -10px;
+margin-bottom: 15px;
+color: white;
+}
+
+.product-details .product-description {
+color: #9999;
+line-height: 1.6;
+}
+
+.product-details h4 {
+margin-top: 20px;
+font-size: 35px;
+font-weight: bold;
+color: white;
+}
+
+.variant-selection .form-label {
+margin-top: 20px;
+font-size: 20px;
+font-weight: bold;
+color: white;
+display: block;
+}
+.size-selection {
+margin-bottom: 15px;
+margin-top: 40px;
+}
+
+.size-selection .form-label {
+margin-top: -20px;
+font-size: 16px;
+font-weight: bold;
+color: white;
+display: block;
+}
+
+.btn-group .btn {
+font-size: 14px;
+padding: 8px 16px;
+}
+
+.cart-container {
+margin-top: 20px;
+}
+
+.cart-container .btn-primary {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: white;
+border-color: white;
+}
+
+.cart-container .btn-primary:hover {
+background-color: white;
+border-color: white;
+}
+
+.custom-cart-logo {
+width: 24px;
+margin-right: 10px;
+}
+
+.swal2-popup {
+background-color: #000 !important; /* Ubah latar belakang menjadi hitam */
+color: #fff; /* Warna teks menjadi putih */
+}
+
+.swal2-icon {
+color: #fff; /* Warna ikon (jika ada) menjadi putih */
+}
+
+.swal2-title {
+color: #fff; /* Warna judul menjadi putih */
+}
+
+.swal2-content {
+color: #fff; /* Warna teks konten menjadi putih */
+}
+
+.swal2-confirm,
+.swal2-cancel {
+color: #000; /* Warna teks tombol */
+background-color: #fff; /* Warna latar belakang tombol */
+border: none; /* Hilangkan border */
+padding: 10px 20px; /* Beri padding pada tombol */
+border-radius: 5px; /* Bulatan sudut tombol */
+cursor: pointer; /* Kursor jadi pointer saat dihover */
+}
+
+.swal2-confirm:hover,
+.swal2-cancel:hover {
+opacity: 0.8; /* Transparansi tombol saat dihover */
+}
